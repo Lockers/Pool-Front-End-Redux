@@ -1,9 +1,10 @@
 import React from 'react';
+import { Players } from './components/Players';
 
 function App() {
   return (
     <div>
-      App.JS
+      <Players />
     </div>
   );
 }
