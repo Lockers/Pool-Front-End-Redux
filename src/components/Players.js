@@ -1,8 +1,9 @@
 import React, { useEffect  }from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getPlayers } from '../actions/Actions';
+import { PlayerCard } from './PlayerCard';
 
-export const Players = (props) => {
+export const Players = () => {
     const players = useSelector(state => state.players)
     const dispatch = useDispatch()
     
@@ -10,10 +11,10 @@ export const Players = (props) => {
         dispatch(getPlayers())
     }, [dispatch])
     
-    
-    console.log(players)
     return (
-        <div></div>
+        <div>
+            {players.map(player => <PlayerCard player={player} />)}
+        </div>
     )
 }
 
