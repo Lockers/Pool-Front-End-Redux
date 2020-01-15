@@ -10,19 +10,20 @@ import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import { red } from '@material-ui/core/colors';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
+import Button from '@material-ui/core/Button';
+
+//Styles for player cards and expanding buttons
 
 const useStyles = makeStyles(theme => ({
     card: {
         maxWidth: 345,
         margin: '0 auto',
         marginTop: '3rem',
-        backgroundColor: 'lightgrey',
+        backgroundColor: 'green',
         fontWeight: 'bolder',
-        textAlign: 'center'
+        textAlign: 'center',
     },
     media: {
         height: 0,
@@ -34,9 +35,11 @@ const useStyles = makeStyles(theme => ({
         transition: theme.transitions.create('transform', {
             duration: theme.transitions.duration.shortest,
         }),
+        margin: '0 auto',
+        textAlign: 'center'
     },
     expandOpen: {
-        transform: 'rotate(180deg)',
+        margin: '0 auto',
         textAlign: 'center'
     },
     avatar: {
@@ -46,30 +49,53 @@ const useStyles = makeStyles(theme => ({
 
 export const PlayerCard = (props) => {
 
+    //import Classes for styles
+
     const classes = useStyles();
+
+    //Set State for two expanding click handlers
     const [expanded, setExpanded] = React.useState(false);
+    const [expanded1, setExpanded1] = React.useState(false)
+
+    //Set results array from props and reverse array to get latest results first
+    const [resultArray] = React.useState([...props.player.results].reverse())
+
+    //Calculate win percentage from played games (from props)
     const winPercentage = Math.round(props.player.won / props.player.played * 100);
-    const handleExpandClick = () => {
+
+
+    //Handles button expand click
+    const handleResultsExpandClick = () => {
         setExpanded(!expanded);
     };
 
-    const lol = props.player.results.reverse()
-    const newArray = []
-    lol.forEach(lel => {
-        if (lel.challenger === props.player.name) {
-            if (lel.challengerScore > lel.challengedScore)
-                newArray.push('W')
-            else if (lel.challengedScore > lel.challengerScore)
-                newArray.push('L')
-        }
-        if (lel.challenged === props.player.name) {
-            if (lel.challengedScore > lel.challengerScore)
-                newArray.push('W')
-            else if (lel.challengerScore > lel.challengedScore)
-                newArray.push('L')
-        }
-    })
-    newArray.slice(0, 6).reverse()
+    //Handles Stats Expand click
+    const handleStatsExpandClick = () => {
+        setExpanded1(!expanded1);
+    };
+
+    //Calculates Form from results array
+
+    const getForm = (array) => {
+        const newArray = []
+
+        array.forEach(lel => {
+            if (lel.challenger === props.player.name) {
+                if (lel.challengerScore > lel.challengedScore)
+                    newArray.push('W')
+                else if (lel.challengedScore > lel.challengerScore)
+                    newArray.push('L')
+            }
+            if (lel.challenged === props.player.name) {
+                if (lel.challengedScore > lel.challengerScore)
+                    newArray.push('W')
+                else if (lel.challengerScore > lel.challengedScore)
+                    newArray.push('L')
+            }
+        })
+
+        return newArray.slice(0,6).reverse()
+    }
 
     return (
         <div>
@@ -93,36 +119,45 @@ export const PlayerCard = (props) => {
                         <p>Played: {props.player.played}</p>
                         <p>Won: {props.player.won}</p>
                         <p>Win Percentage: {winPercentage}%</p>
-                        <p>Form {newArray.slice(0, 6).reverse()} </p>
+                        <p>Form {getForm(resultArray)} </p>
 
                     </Typography>
                 </CardContent>
-                <CardActions disableSpacing>
-                    <IconButton aria-label="add to favorites">
-                    <FavoriteIcon />
-                </IconButton>
-                    <IconButton aria-label="share">
-                    <ShareIcon />
-                </IconButton>
-                    <IconButton
+                <CardActions>
+                    <Button variant='contained'
                         className={clsx(classes.expand, {
                             [classes.expandOpen]: expanded,
                         })}
-                        onClick={handleExpandClick}
+                        onClick={handleResultsExpandClick}
                         aria-expanded={expanded}
                         aria-label="show more"
-                    >
+                    >Results
                         <ExpandMoreIcon />
-                    </IconButton>
+                    </Button>
+                    <Button variant='contained'
+                        className={clsx(classes.expand, {
+                            [classes.expandOpen]: expanded,
+                        })}
+                        onClick={handleStatsExpandClick}
+                        aria-expanded={expanded}
+                        aria-label="show more"
+                    >Stats
+                        <ExpandMoreIcon />
+                    </Button>
                 </CardActions>
                 <Collapse in={expanded} timeout="auto" unmountOnExit>
                     <CardContent>
                         <Typography paragraph>Previous Results</Typography>
-                        {props.player.results.map(result => <Typography style={{ fontSize: '14px' }} paragraph>
+                        {resultArray.map(result => <Typography style={{ fontSize: '14px' }} paragraph>
                             <div>
                                 <span>{result.challenger} {result.challengerScore} - {result.challengedScore} {result.challenged} </span>
                             </div>
                         </Typography>)}
+                    </CardContent>
+                </Collapse>
+                <Collapse in={expanded1} timeout="auto" unmountOnExit>
+                    <CardContent>
+                        <div>Sucking On big black cock</div>
                     </CardContent>
                 </Collapse>
             </Card>

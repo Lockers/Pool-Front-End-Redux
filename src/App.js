@@ -1,10 +1,12 @@
 import React from 'react';
-import { Players } from './components/Players';
+import { SimpleContainer } from './display/Display';
+import Drawer from './display/Drawer';
 
 function App() {
   return (
     <div>
-      <Players />
+      <Drawer />
+      <SimpleContainer />
     </div>
   );
 }
