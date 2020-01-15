@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getPlayers } from '../../actions/Actions';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import { useGetRequest } from '../../helpers/GetRequest';
-import { Loader } from '../../misc/Loader';
+
 
 //Import Column Data to set up table
 
@@ -24,15 +25,16 @@ function createData(leaguePosition, name, played, won, lost, challengable, daysL
 
 export const LeagueTable = () => {
 
-    const players = useGetRequest('players')
+    const players = useSelector(state => state.players)
+    const dispatch = useDispatch()
 
-    if (!players) {
-        return <Loader />
-    }
+    useEffect(() => {
+        dispatch(getPlayers())
+    }, [dispatch])
 
     const rows = []
 
-    players.data.map(player => {
+    players.map(player => {
         if (player.results.length > 0) {
             const hi = new Date(Date.parse(player.results.slice(-1)[0].date)).toString();
             const lol = Date.parse(hi)
@@ -79,10 +81,10 @@ export const LeagueTable = () => {
                 {rows.map(row => {
                     return (
                         <TableRow hover role="checkbox" tabIndex={-1} key={row.leaguePosition} style={row.challengable ? { backgroundColor: 'lightgreen' } : { backgroundColor: 'orange' }}>
-                            {columns.map(column => {
+                            {columns.map((column, index) => {
                                 const value = row[column.id];
                                 return (
-                                    <TableCell key={column.id} align={column.align}>
+                                    <TableCell key={index} align={column.align}>
                                         {column.format && typeof value === 'number' ? column.format(value) : value}
                                     </TableCell>
                                 );

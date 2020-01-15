@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {useState} from 'react';
+import { usePlayerCardHelper } from '../../helpers/PlayerCardHelper';
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
@@ -54,11 +55,14 @@ export const PlayerCard = (props) => {
     const classes = useStyles();
 
     //Set State for two expanding click handlers
-    const [expanded, setExpanded] = React.useState(false);
-    const [expanded1, setExpanded1] = React.useState(false)
+    const [expanded, setExpanded] = useState(false);
+    const [expanded1, setExpanded1] = useState(false)
 
     //Set results array from props and reverse array to get latest results first
-    const [resultArray] = React.useState([...props.player.results].reverse())
+    const [resultArray] = useState([...props.player.results].reverse())
+
+    //Custom hook for getting form
+    const playerHelper = usePlayerCardHelper()
 
     //Calculate win percentage from played games (from props)
     const winPercentage = Math.round(props.player.won / props.player.played * 100);
@@ -74,29 +78,7 @@ export const PlayerCard = (props) => {
         setExpanded1(!expanded1);
     };
 
-    //Calculates Form from results array
-
-    const getForm = (array) => {
-        const newArray = []
-
-        array.forEach(lel => {
-            if (lel.challenger === props.player.name) {
-                if (lel.challengerScore > lel.challengedScore)
-                    newArray.push('W')
-                else if (lel.challengedScore > lel.challengerScore)
-                    newArray.push('L')
-            }
-            if (lel.challenged === props.player.name) {
-                if (lel.challengedScore > lel.challengerScore)
-                    newArray.push('W')
-                else if (lel.challengerScore > lel.challengedScore)
-                    newArray.push('L')
-            }
-        })
-
-        return newArray.slice(0,6).reverse()
-    }
-
+    //Returns Material UI Card with player details, form.... TODO Stats
     return (
         <div>
             <Card className={classes.card}>
@@ -119,7 +101,7 @@ export const PlayerCard = (props) => {
                         <p>Played: {props.player.played}</p>
                         <p>Won: {props.player.won}</p>
                         <p>Win Percentage: {winPercentage}%</p>
-                        <p>Form {getForm(resultArray)} </p>
+                        <p>Form {playerHelper.getForm(resultArray, props)} </p>
 
                     </Typography>
                 </CardContent>

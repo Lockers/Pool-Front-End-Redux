@@ -21,7 +21,6 @@ const useStyles = makeStyles(theme => ({
     root: {
         display: 'flex',
         margin: '1rem',
-        textDecoration: 'none'
     },
     drawer: {
         [theme.breakpoints.up('sm')]: {
@@ -80,22 +79,22 @@ function ResponsiveDrawer(props) {
                     <NavLink to='/leaguetable'><ListItemText />League Table</NavLink>
                 </ListItem>
                 <ListItem button >
-                    <NavLink to='/leaguetable'><ListItemText />Players</NavLink>
+                    <NavLink to='/players'><ListItemText />Players</NavLink>
                 </ListItem>
                 <ListItem button >
-                    <NavLink to='/leaguetable'><ListItemText />Results</NavLink>
+                    <NavLink to='/results'><ListItemText />Results</NavLink>
                 </ListItem>
                 <ListItem button >
-                    <NavLink to='/leaguetable'><ListItemText />Upcoming Challenges</NavLink>
+                    <NavLink to='/upcomingchallenges'><ListItemText />Upcoming Challenges</NavLink>
                 </ListItem>
                 <ListItem button >
-                    <NavLink to='/leaguetable'><ListItemText />DashBoard</NavLink>
+                    <NavLink to='/dashboard'><ListItemText />DashBoard</NavLink>
                 </ListItem>
                 <ListItem button >
-                    <NavLink to='/leaguetable'><ListItemText />Rules</NavLink>
+                    <NavLink to='/rules'><ListItemText />Rules</NavLink>
                 </ListItem>
                 <ListItem button >
-                    <NavLink to='/leaguetable'><ListItemText />Admin</NavLink>
+                    <NavLink to='/admin'><ListItemText />Admin</NavLink>
                 </ListItem>
                
             </List>
