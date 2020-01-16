@@ -2,6 +2,7 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 import { LeagueTable } from '../components/leagueTable/LeagueTable';
 import { Players } from '../components/players/Players';
+import { ViewResults } from '../components/results/ViewResults';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Container from '@material-ui/core/Container';
 
@@ -12,6 +13,7 @@ export const SimpleContainer = () => {
             <Container maxWidth="sm">
                 <Route exact path="/leaguetable" component={LeagueTable} />
                 <Route exact path="/players" component={Players} />
+                <Route exact path="/results" component={ViewResults} />
             </Container>
         </React.Fragment>
     );

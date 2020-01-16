@@ -96,7 +96,7 @@ export const PlayerCard = (props) => {
                     title={props.player.name}
                 />
                 <CardContent>
-                    <Typography variant="body2" color="textSecondary" component="p">
+                    <Typography variant="body2" color="textSecondary" component="div">
                         <p>League Position: {props.player.leaguePosition}</p>
                         <p>Played: {props.player.played}</p>
                         <p>Won: {props.player.won}</p>
@@ -130,10 +130,9 @@ export const PlayerCard = (props) => {
                 <Collapse in={expanded} timeout="auto" unmountOnExit>
                     <CardContent>
                         <Typography paragraph>Previous Results</Typography>
-                        {resultArray.map(result => <Typography style={{ fontSize: '14px' }} paragraph>
-                            <div>
-                                <span>{result.challenger} {result.challengerScore} - {result.challengedScore} {result.challenged} </span>
-                            </div>
+                        {resultArray.map((result, index) => <Typography key={index} style={{ fontSize: '14px' }} >
+                            <span>{result.challenger} {result.challengerScore} - {result.challengedScore} {result.challenged} </span>
+                            
                         </Typography>)}
                     </CardContent>
                 </Collapse>

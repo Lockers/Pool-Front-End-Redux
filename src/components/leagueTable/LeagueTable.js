@@ -6,6 +6,7 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
+import uuid from 'uuid'
 
 
 //Import Column Data to set up table
@@ -27,13 +28,12 @@ export const LeagueTable = () => {
 
     const players = useSelector(state => state.players)
     const dispatch = useDispatch()
-
+    
     useEffect(() => {
         dispatch(getPlayers())
     }, [dispatch])
-
+    
     const rows = []
-
     players.map(player => {
         if (player.results.length > 0) {
             const hi = new Date(Date.parse(player.results.slice(-1)[0].date)).toString();
@@ -56,8 +56,7 @@ export const LeagueTable = () => {
         if (isNaN(days)) {
             days = 0;
         }
-        console.log(days)
-
+       
         return rows.push(createData(player.leaguePosition, player.name, player.played, player.won, player.lost, player.challengable, days))
 
     })
@@ -68,7 +67,7 @@ export const LeagueTable = () => {
                 <TableRow>
                     {columns.map(column => (
                         <TableCell
-                            key={column.id}
+                            key={uuid()}
                             align={column.align}
                             style={{ minWidth: column.minWidth }}
                         >
@@ -80,11 +79,11 @@ export const LeagueTable = () => {
             <TableBody>
                 {rows.map(row => {
                     return (
-                        <TableRow hover role="checkbox" tabIndex={-1} key={row.leaguePosition} style={row.challengable ? { backgroundColor: 'lightgreen' } : { backgroundColor: 'orange' }}>
+                        <TableRow hover role="checkbox" tabIndex={-1} key={uuid(5)} style={row.challengable ? { backgroundColor: 'lightgreen' } : { backgroundColor: 'orange' }}>
                             {columns.map((column, index) => {
                                 const value = row[column.id];
                                 return (
-                                    <TableCell key={index} align={column.align}>
+                                    <TableCell key={uuid()} align={column.align}>
                                         {column.format && typeof value === 'number' ? column.format(value) : value}
                                     </TableCell>
                                 );

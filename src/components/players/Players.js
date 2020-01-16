@@ -15,10 +15,10 @@ export const Players = () => {
     }, [dispatch])
     
     //Map over players and create Player card per player
-    
+
     return (
         <div>
-            {players.map(player => <PlayerCard player={player} />)}
+            {players.map((player,index) => <PlayerCard player={player} key={index} />)}
         </div>
     )
 }
