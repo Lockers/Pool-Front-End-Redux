@@ -5,6 +5,9 @@ import {
     GETTING_ALL_RESULTS,
     GETTING_ALL_RESULTS_SUCCESS,
     GETTING_ALL_RESULTS_FAILED,
+    GETTING_ALL_CHALLENGES,
+    GETTING_ALL_CHALLENGES_SUCCESS,
+    GETTING_ALL_CHALLENGES_FAILED
 } from './ActionTypes';
 import axios from 'axios';
 
@@ -31,5 +34,17 @@ export const getResults = () => dispatch => {
         })
         .catch(err => {
             dispatch({ type: GETTING_ALL_RESULTS_FAILED, payload: err.msg })
+        })
+}
+
+export const getChallenges = () => dispatch => {
+    dispatch({ type: GETTING_ALL_CHALLENGES });
+    axios
+        .get(`${baseUrl}challenges`)
+        .then(res => {
+            dispatch({ type: GETTING_ALL_CHALLENGES_SUCCESS, payload: res.data });
+        })
+        .catch(err => {
+            dispatch({ type: GETTING_ALL_CHALLENGES_FAILED, payload: err.msg })
         })
 }

@@ -13,6 +13,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import { NavLink } from 'react-router-dom';
+import uuid from 'uuid'
 import '../../src/index.css'
 
 const drawerWidth = 240;
@@ -38,21 +39,22 @@ const useStyles = makeStyles(theme => ({
             marginLeft: drawerWidth,
         },
         backgroundColor: 'green',
+
     },
     menuButton: {
         margin: theme.spacing(2),
         [theme.breakpoints.up('sm')]: {
             display: 'none',
         },
-        
+
+
     },
     toolbar: theme.mixins.toolbar,
     drawerPaper: {
         width: drawerWidth,
         backgroundColor: 'green',
         color: 'white',
-        margin: '0 auto',
-        
+
     },
     backgroundColor: 'green',
     content: {
@@ -71,32 +73,21 @@ function ResponsiveDrawer(props) {
         setMobileOpen(!mobileOpen);
     };
 
+    const getTitle = (link) => {
+        const removed = link.slice(1)
+        return removed.toUpperCase()
+    }
+
+    const links = ['/leaguetable', '/players', '/results', '/challenges', '/dashboard', '/rules', '/admin']
     const drawer = (
         <div>
             <div className={classes.toolbar} />
             <List>
-                    <ListItem button >
-                    <NavLink to='/leaguetable'><ListItemText />League Table</NavLink>
-                </ListItem>
-                <ListItem button >
-                    <NavLink to='/players'><ListItemText />Players</NavLink>
-                </ListItem>
-                <ListItem button >
-                    <NavLink to='/results'><ListItemText />Results</NavLink>
-                </ListItem>
-                <ListItem button >
-                    <NavLink to='/upcomingchallenges'><ListItemText />Upcoming Challenges</NavLink>
-                </ListItem>
-                <ListItem button >
-                    <NavLink to='/dashboard'><ListItemText />DashBoard</NavLink>
-                </ListItem>
-                <ListItem button >
-                    <NavLink to='/rules'><ListItemText />Rules</NavLink>
-                </ListItem>
-                <ListItem button >
-                    <NavLink to='/admin'><ListItemText />Admin</NavLink>
-                </ListItem>
-               
+                {links.map((link, index) => {
+                    return (<ListItem button key={uuid()} onClick={handleDrawerToggle}>
+                        <NavLink to={link}><ListItemText />{getTitle(link)}</NavLink>
+                    </ListItem>)
+                })}
             </List>
         </div>
     );
@@ -117,7 +108,7 @@ function ResponsiveDrawer(props) {
                     </IconButton>
                     <Typography variant="h6" noWrap>
                         Telford 8 Ball Ladder League
-          </Typography>
+                    </Typography>
                 </Toolbar>
             </AppBar>
             <nav className={classes.drawer} aria-label="mailbox folders">

@@ -32,9 +32,20 @@ code {
 .MuiListItemButton {
   color: white;
 }
+
 a.active {
   text-decoration: none;
-  color: white;
+  color: grey;
   margin: 0 auto;
   font-size: 20px;
 }
+
+:any-link {
+  text-decoration: none;
+  text-align: center;
+  color: white;
+  font-size: medium;
+  margin: 0 auto;
+}
+:any-link:active {color: blue}
+

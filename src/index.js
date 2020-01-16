@@ -2,20 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
-import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
+import { createStore, applyMiddleware, compose  } from 'redux';
 import { BrowserRouter } from 'react-router-dom';
 import {
     getPlayersReducer,
-    // getResultsReducer,
 } from './reducers/Reducers';
 
 import './index.css';
 import App from './App';
-
-// const rootReducer = combineReducers({
-//     getPlayersReducer,
-//     getResultsReducer,
-// })
 
 const store = createStore(
     getPlayersReducer,
