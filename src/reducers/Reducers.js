@@ -8,6 +8,9 @@ import {
     GETTING_ALL_CHALLENGES,
     GETTING_ALL_CHALLENGES_SUCCESS,
     GETTING_ALL_CHALLENGES_FAILED,
+    GETTING_ALL_VENUES_STATS,
+    GETTING_ALL_VENUES_STATS_SUCCESS,
+    GETTING_ALL_VENUES_STATS_FAILED,
 } from '../actions/ActionTypes';
 
 const initialState = {
@@ -17,6 +20,8 @@ const initialState = {
     fetchingResults: false,
     challenges: [],
     fetchingChallenges: false,
+    stats: [],
+    fetchingStats: false,
     error: null
 }
 
@@ -72,6 +77,23 @@ export const getPlayersReducer = (state = initialState, action) => {
                 ...state,
                 fetchingChallenges: false,
                 challenges: [...state.challenges, ...action.payload],
+            };
+        case GETTING_ALL_VENUES_STATS:
+            return {
+                ...state,
+                fetchingStats: true
+            };
+        case GETTING_ALL_VENUES_STATS_FAILED:
+            return {
+                ...state,
+                fetchingStats: false,
+                error: action.payload
+            };
+        case GETTING_ALL_VENUES_STATS_SUCCESS:
+            return {
+                ...state,
+                fetchingStats: false,
+                stats: [...state.stats, ...action.payload],
             }
         default: return state;
     }

@@ -5,6 +5,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  margin: 0 auto;
 }
 
 code {
@@ -13,7 +15,7 @@ code {
 }
 
 .makeStyles-toolbar-5 {
-  background-color: green;
+  background-color: lightblue;
   text-align: center;
   font-size: 20px;
   margin: 0 auto;

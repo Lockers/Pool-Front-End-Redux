@@ -1,5 +1,7 @@
 
+
 export const usePlayerCardHelper = () => {
+
     const getForm = (array, props) => {
         const newArray = []
 
@@ -19,9 +21,9 @@ export const usePlayerCardHelper = () => {
         })
 
         return newArray.slice(0, 6).reverse()
-        
+
     }
     return {
-        getForm
+        getForm,
     }
 }

@@ -11,6 +11,7 @@ import Container from '@material-ui/core/Container';
 const useStyles = makeStyles(theme => ({
     root: {
         width: '100%',
+        margin:'1rem auto'
     },
     heading: {
         fontSize: theme.typography.pxToRem(15),
@@ -22,16 +23,21 @@ const useStyles = makeStyles(theme => ({
     },
     details: {
         alignItems: 'center',
+        color: 'blue',
     },
     column: {
         flexBasis: '33.33%',
+        color: 'blue',
+        textAlign:'center'
     },
 }));
 
 export default function ResultsList(props) {
     const classes = useStyles();
     return (
-        <Container>
+        <Container classes={{
+            root: classes.root
+        }}>
             <div className={classes.root}>
                 <ExpansionPanel >
                     <ExpansionPanelSummary

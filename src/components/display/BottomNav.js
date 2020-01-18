@@ -10,10 +10,9 @@ import ContactMailIcon from '@material-ui/icons/ContactMail';
 const useStyles = makeStyles({
     root: {
         margin: '0 auto',
-        marginTop: '2rem',
-        marginBottom: '2rem',
-        width: 500,
-        
+        marginTop: '1rem',
+        backgroundColor: 'green',
+        color: 'white'
     },
 });
 
@@ -35,7 +34,7 @@ export default function SimpleBottomNavigation() {
             showLabels
             className={classes.root}
         >
-            <BottomNavigationAction label="Contact Us" icon={<ContactMailIcon/>} />
+            <BottomNavigationAction label="Contact Us" icon={<ContactMailIcon />} />
             <BottomNavigationAction label="Favorites" icon={<FavoriteIcon />} />
             <BottomNavigationAction label="Nearby" icon={<LocationOnIcon />} />
         </BottomNavigation>

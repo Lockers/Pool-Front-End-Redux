@@ -14,6 +14,7 @@ import { red } from '@material-ui/core/colors';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import Button from '@material-ui/core/Button';
+import ResultsList  from '../../components/display/ResultsList';
 
 //Styles for player cards and expanding buttons
 
@@ -22,7 +23,7 @@ const useStyles = makeStyles(theme => ({
         maxWidth: 345,
         margin: '0 auto',
         marginTop: '3rem',
-        backgroundColor: 'green',
+        color: 'blue',
         fontWeight: 'bolder',
         textAlign: 'center',
     },
@@ -37,11 +38,13 @@ const useStyles = makeStyles(theme => ({
             duration: theme.transitions.duration.shortest,
         }),
         margin: '0 auto',
-        textAlign: 'center'
+        textAlign: 'center',
+       
     },
     expandOpen: {
         margin: '0 auto',
-        textAlign: 'center'
+        textAlign: 'center',
+        
     },
     avatar: {
         backgroundColor: red[500],
@@ -49,7 +52,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export const PlayerCard = (props) => {
-
+    
     //import Classes for styles
 
     const classes = useStyles();
@@ -62,7 +65,7 @@ export const PlayerCard = (props) => {
     const [resultArray] = useState([...props.player.results].reverse())
 
     //Custom hook for getting form
-    const playerHelper = usePlayerCardHelper()
+    const playerHelper = usePlayerCardHelper(props)
 
     //Calculate win percentage from played games (from props)
     const winPercentage = Math.round(props.player.won / props.player.played * 100);
@@ -77,6 +80,12 @@ export const PlayerCard = (props) => {
     const handleStatsExpandClick = () => {
         setExpanded1(!expanded1);
     };
+
+    if (!props) {
+        return <div>Loading</div>
+    }
+
+    
 
     //Returns Material UI Card with player details, form.... TODO Stats
     return (
@@ -96,7 +105,7 @@ export const PlayerCard = (props) => {
                     title={props.player.name}
                 />
                 <CardContent>
-                    <Typography variant="body2" color="textSecondary" component="div">
+                    <Typography variant="body2" color="secondary" component="div">
                         <p>League Position: {props.player.leaguePosition}</p>
                         <p>Played: {props.player.played}</p>
                         <p>Won: {props.player.won}</p>
@@ -106,7 +115,7 @@ export const PlayerCard = (props) => {
                     </Typography>
                 </CardContent>
                 <CardActions>
-                    <Button variant='contained'
+                    <Button variant='contained' color='primary'
                         className={clsx(classes.expand, {
                             [classes.expandOpen]: expanded,
                         })}
@@ -116,7 +125,7 @@ export const PlayerCard = (props) => {
                     >Results
                         <ExpandMoreIcon />
                     </Button>
-                    <Button variant='contained'
+                    <Button variant='contained' color='primary'
                         className={clsx(classes.expand, {
                             [classes.expandOpen]: expanded,
                         })}
@@ -130,15 +139,12 @@ export const PlayerCard = (props) => {
                 <Collapse in={expanded} timeout="auto" unmountOnExit>
                     <CardContent>
                         <Typography paragraph>Previous Results</Typography>
-                        {resultArray.map((result, index) => <Typography key={index} style={{ fontSize: '14px' }} >
-                            <span>{result.challenger} {result.challengerScore} - {result.challengedScore} {result.challenged} </span>
-                            
-                        </Typography>)}
+                        {resultArray.map((result, index) => <ResultsList key={index} style={{ fontSize: '14px' }} result={result} />)}
                     </CardContent>
                 </Collapse>
                 <Collapse in={expanded1} timeout="auto" unmountOnExit>
                     <CardContent>
-                        <div>Sucking On big black cock</div>
+                        <div>Individual User Dash</div>
                     </CardContent>
                 </Collapse>
             </Card>
