@@ -1,29 +1,47 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getVenueStats } from '../../actions/Actions';
-import  PieChart  from '../display/DonutChart';
+import { getVenueStats, getRulesetStats, getChallengeStats } from '../../actions/Actions';
+import PieChart from '../display/DonutChart';
 
 export const DashBoard = () => {
 
     const stats = useSelector(state => state.stats)
+    const rulesets = useSelector(state => state.rulesets)
+    const challenge = useSelector(state => state.challenge)
     const dispatch = useDispatch()
 
     useEffect(() => {
         dispatch(getVenueStats())
     }, [dispatch])
-    console.log(stats)
-    if (!stats) {
+
+    useEffect(() => {
+        dispatch(getRulesetStats())
+    }, [dispatch])
+
+    useEffect(() => {
+        dispatch(getChallengeStats())
+    }, [dispatch])
+
+    if (!stats || !rulesets || !challenge) {
         return <h1>Loader</h1>
     }
+    const totalGamesPlayed = challenge.reduce(function (accumulator, currentValue, currentIndex, array) {
+        return accumulator + currentValue.value
+    }, 0)
     return (
         <div>
-        <div>
-            Venues Used
-            <PieChart stats={stats} />
-        </div>
-        <div>
-            Venues Used
-            <PieChart stats={stats} />
+            <h1>Dashboard</h1>
+            <div>
+                <h3>Venues Used</h3>
+                <PieChart stats={stats} />
+            </div>
+            <div>
+                <h3>Rulesets Played</h3>
+                <PieChart stats={rulesets} />
+            </div>
+            <div>
+                <h3>Total Games Played: {totalGamesPlayed} </h3>
+                <PieChart stats={challenge} />
             </div>
         </div>
     )
