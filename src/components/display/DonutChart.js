@@ -17,15 +17,6 @@ const renderActiveShape = (props) => {
     const ey = my;
     const textAnchor = cos >= 0 ? 'start' : 'end';
 
-    function getRandomColor() {
-        var letters = '0123456789ABCDEF';
-        var color = '#';
-        for (var i = 0; i < 6; i++) {
-            color += letters[Math.floor(Math.random() * 16)];
-        }
-        return color;
-    }
-
     return (
         <g>
             <text x={cx} y={cy} dy={8} textAnchor="middle" fill={fill}>{payload.name}</text>
@@ -65,14 +56,6 @@ export default class Example extends PureComponent {
             activeIndex: 0,
         };
     }
-     getRandomColor() {
-    var letters = '0123456789ABCDEF';
-    var color = '#';
-    for (var i = 0; i < 6; i++) {
-        color += letters[Math.floor(Math.random() * 16)];
-    }
-    return color;
-}
   
     onPieEnter = (data, index) => {
         this.setState({
