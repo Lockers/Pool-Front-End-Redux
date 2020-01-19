@@ -1,6 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
+import Moment from 'react-moment';
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
@@ -57,8 +58,14 @@ export default function ResultsList(props) {
                         <div className={classes.column}>
                             <Typography className={classes.Heading}>{props.result.challenged}</Typography>
                         </div>
+                        
                     </ExpansionPanelSummary>
                     <ExpansionPanelDetails className={classes.details}>
+                        <div className={classes.column}>
+                            <Typography className={classes.Heading}>{props.result.date ? <Moment format="DD/MM/YYYY">{props.result.date}</Moment> : 'No Date'}</Typography>
+                        </div>
+                        <div className={classes.column}>
+                        </div>
                         {props.result.venue}
                         <div className={classes.column} />
                         {props.result.ruleset}
