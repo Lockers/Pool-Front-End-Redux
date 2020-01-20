@@ -8,7 +8,7 @@ export const Pagination = ({ resultsPerPage, totalResults, paginate }) => {
         pageNumbers.push(i)
         return (
             <nav>
-                <ul>
+                
                     {pageNumbers.map(number => (
                         <Button
                             variant='contained'
@@ -17,7 +17,7 @@ export const Pagination = ({ resultsPerPage, totalResults, paginate }) => {
                             {number}
                         </Button>    
                     ))}
-                </ul>
+                
 
             </nav>
         )

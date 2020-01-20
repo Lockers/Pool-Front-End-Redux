@@ -3,6 +3,7 @@ import { getResults } from '../../store/actions/Actions';
 import { useDispatch, useSelector } from 'react-redux';
 import ResultsList from '../display/ResultsList';
 import { Pagination } from '../display/Pagination';
+import { Loader } from '../display/Loader';
 
 export const ViewResults = () => {
 
@@ -23,7 +24,7 @@ export const ViewResults = () => {
     const paginate = (pageNumber) => setCurrentPage(pageNumber)
     
     if (!results) {
-        return <div>Loading</div>
+        return <Loader />
     }
 
     return (

@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getVenueStats, getRulesetStats, getChallengeStats } from '../../store/actions/Actions';
 import PieChart from '../display/DonutChart';
+import { Loader } from '../display/Loader';
 
 export const DashBoard = () => {
 
@@ -17,7 +18,7 @@ export const DashBoard = () => {
     }, [dispatch])
 
     if (!stats || !rulesets || !challenge) {
-        return <h1>Loader</h1>
+        return <Loader />
     }
     const totalGamesPlayed = challenge.reduce(function (accumulator, currentValue, currentIndex, array) {
         return accumulator + currentValue.value

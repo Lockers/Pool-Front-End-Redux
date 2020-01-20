@@ -11,7 +11,7 @@ const useStyles = makeStyles({
     root: {
         margin: '0 auto',
         marginTop: '1rem',
-        backgroundColor: 'green',
+        backgroundColor: 'white',
         color: 'white'
     },
 });
