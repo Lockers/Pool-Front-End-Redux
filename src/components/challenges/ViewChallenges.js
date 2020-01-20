@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react';
-import { getChallenges } from '../../actions/Actions';
+import { getChallenges } from '../../store/actions/Actions';
 import { useDispatch, useSelector } from 'react-redux';
 import ResultsList from '../display/ResultsList';
-import uuid from 'uuid';
 
 export const ViewChallenges = () => {
 
@@ -16,10 +15,7 @@ export const ViewChallenges = () => {
     return (
         <div>
             <h1>Upcoming Challenges</h1>
-            {challenges.map(result => {
-                return <ResultsList result={result} key={uuid()} />
-            }
-            )}
+            <ResultsList results={challenges} />
         </div >
     )
 }

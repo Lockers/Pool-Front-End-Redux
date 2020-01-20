@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getVenueStats, getRulesetStats, getChallengeStats } from '../../actions/Actions';
+import { getVenueStats, getRulesetStats, getChallengeStats } from '../../store/actions/Actions';
 import PieChart from '../display/DonutChart';
 
 export const DashBoard = () => {
@@ -12,13 +12,7 @@ export const DashBoard = () => {
 
     useEffect(() => {
         dispatch(getVenueStats())
-    }, [dispatch])
-
-    useEffect(() => {
         dispatch(getRulesetStats())
-    }, [dispatch])
-
-    useEffect(() => {
         dispatch(getChallengeStats())
     }, [dispatch])
 

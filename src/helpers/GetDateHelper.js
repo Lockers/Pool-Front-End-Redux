@@ -1,10 +1,8 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getPlayers } from '../actions/Actions';
-
+import { getPlayers } from '../store/actions/Actions';
 
 export const useGetDateHelper = () => {
-
     const columns = [
         { id: 'leaguePosition', label: 'Pos', minWidth: 50 },
         { id: 'name', label: 'Name', minWidth: 100 },
@@ -18,9 +16,9 @@ export const useGetDateHelper = () => {
         return { leaguePosition, name, played, won, lost, challengable, daysLeft };
     }
 
-
     const players = useSelector(state => state.players)
     const dispatch = useDispatch()
+    
 
     useEffect(() => {
         dispatch(getPlayers())

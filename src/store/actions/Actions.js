@@ -18,12 +18,14 @@ import {
     GETTING_ALL_CHALLENGE_STATS_SUCCESS,
     GETTING_ALL_CHALLENGE_STATS_FAILED,
 } from './ActionTypes';
+
 import axios from 'axios';
 
 // const baseUrl = 'https://telford-pool-back-end.herokuapp.com/';
 const baseUrl = 'http://localhost:5000/'
 
 export const getPlayers = () => dispatch => {
+    console.log(' get players firing')
     dispatch({ type: GETTING_ALL_PLAYERS });
     axios
         .get(`${baseUrl}players`)

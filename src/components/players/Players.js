@@ -1,6 +1,6 @@
 import React, { useEffect  }from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getPlayers } from '../../actions/Actions';
+import { getPlayers } from '../../store/actions/Actions';
 import { PlayerCard } from './PlayerCard';
 
 export const Players = () => {
