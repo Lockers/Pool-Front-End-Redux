@@ -7,7 +7,6 @@ import { Loader } from '../display/Loader';
 export const ViewResults = () => {
 
     const results = useSelector(state => state.results)
-    // const dispatch = useDispatch()
     const [currentPage, setCurrentPage] = useState(1)
     const [resultsPerPage] = useState(50)
     
@@ -24,7 +23,7 @@ export const ViewResults = () => {
     return (
         <div>
             <h1>Previous Results</h1>
-            <ResultsList results={currentResults} />
+            {currentResults.map(result => <ResultsList result={result} key={result._id} />)}
             <Pagination resultsPerPage={resultsPerPage} totalResults={results.length} paginate={paginate} />
         </div>
     )

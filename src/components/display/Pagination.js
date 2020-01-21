@@ -11,6 +11,7 @@ export const Pagination = ({ resultsPerPage, totalResults, paginate }) => {
                 
                     {pageNumbers.map(number => (
                         <Button
+                            key={number}
                             variant='contained'
                             color='primary'
                             onClick={(e) => paginate(number)} >

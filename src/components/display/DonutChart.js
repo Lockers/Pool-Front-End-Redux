@@ -71,7 +71,7 @@ export default class Example extends PureComponent {
                     activeShape={renderActiveShape}
                     data={this.props.stats}
                     cx={250}
-                    cy={100}
+                    cy={150}
                     innerRadius={60}
                     outerRadius={80}
                     fill={'blue'}
