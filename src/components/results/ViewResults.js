@@ -1,6 +1,5 @@
-import React, {useState, useEffect} from 'react';
-import { getResults } from '../../store/actions/Actions';
-import { useDispatch, useSelector } from 'react-redux';
+import React, {useState} from 'react';
+import { useSelector } from 'react-redux';
 import ResultsList from '../display/ResultsList';
 import { Pagination } from '../display/Pagination';
 import { Loader } from '../display/Loader';
@@ -8,15 +7,10 @@ import { Loader } from '../display/Loader';
 export const ViewResults = () => {
 
     const results = useSelector(state => state.results)
-    const dispatch = useDispatch()
+    // const dispatch = useDispatch()
     const [currentPage, setCurrentPage] = useState(1)
     const [resultsPerPage] = useState(50)
     
-   
-    useEffect(() => {
-        dispatch(getResults())
-    }, [dispatch])
-
     const indexOfLastResult = currentPage * resultsPerPage;
     const indexOfFirstResult = indexOfLastResult - resultsPerPage;
     const currentResults = results.slice(indexOfFirstResult, indexOfLastResult)

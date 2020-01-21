@@ -70,7 +70,6 @@ export const PlayerCard = (props) => {
     //Calculate win percentage from played games (from props)
     const winPercentage = Math.round(props.player.won / props.player.played * 100);
 
-
     //Handles button expand click
     const handleResultsExpandClick = () => {
         setExpanded(!expanded);

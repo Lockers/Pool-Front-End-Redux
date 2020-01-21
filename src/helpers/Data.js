@@ -15,7 +15,7 @@ export const venues = [
 
 export const rulesets = [
     "World Rules",
-    "Blackball",
+    "BlackBall",
     "Old Rules",
     "9 Ball",
     "Supreme",

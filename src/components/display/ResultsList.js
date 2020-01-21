@@ -35,56 +35,51 @@ const useStyles = makeStyles(theme => ({
 
 export default function ResultsList(props) {
     const classes = useStyles();
-
     return (
-    props.results.map(result => {
-        return (
-            <Container classes={{
-                root: classes.root
-            }}>
-                <div className={classes.root}>
-                    <ExpansionPanel >
-                        <ExpansionPanelSummary
-                            expandIcon={<ExpandMoreIcon />}
-                            aria-controls="panel1c-content"
-                            id="panel1c-header"
-                        >
-                            <div className={classes.column}>
-                                <Typography className={classes.heading}>{result.challenger}</Typography>
-                            </div>
-                            <div className={classes.column}>
-                                <Typography className={classes.Heading}>{result.challengerScore}</Typography>
-                            </div>
-                            <div className={classes.column}>
-                                <Typography className={classes.Heading}>{result.challengedScore}</Typography>
-                            </div>
-                            <div className={classes.column}>
-                                <Typography className={classes.Heading}>{result.challenged}</Typography>
-                            </div>
+        <Container classes={{
+            root: classes.root
+                
+        }}>
+            <div className={classes.root}>
+                <ExpansionPanel >
+                    <ExpansionPanelSummary
+                        expandIcon={<ExpandMoreIcon />}
+                        aria-controls="panel1c-content"
+                        id="panel1c-header"
+                    >
+                        <div className={classes.column}>
+                            <Typography className={classes.heading}>{props.result.challenger}</Typography>
+                        </div>
+                        <div className={classes.column}>
+                            <Typography className={classes.Heading}>{props.result.challengerScore}</Typography>
+                        </div>
+                        <div className={classes.column}>
+                            <Typography className={classes.Heading}>{props.result.challengedScore}</Typography>
+                        </div>
+                        <div className={classes.column}>
+                            <Typography className={classes.Heading}>{props.result.challenged}</Typography>
+                        </div>
 
-                        </ExpansionPanelSummary>
-                        <ExpansionPanelDetails className={classes.details}>
-                            <div className={classes.column}>
-                                <Typography className={classes.Heading}>{result.date ? <Moment format="DD/MM/YYYY">{result.date}</Moment> : 'No Date'}</Typography>
-                            </div>
-                            <div className={classes.column}>
-                            </div>
-                            {result.venue}
-                            <div className={classes.column} />
-                            {result.ruleset}
-                            <div className={classes.column}>
-                            </div>
-                            <div className={clsx(classes.column, classes.helper)}>
-                                £{result.pot}
-                            </div>
-                        </ExpansionPanelDetails>
-                    </ExpansionPanel>
-                </div>
-            </Container>
+                    </ExpansionPanelSummary>
+                    <ExpansionPanelDetails className={classes.details}>
+                        <div className={classes.column}>
+                            <Typography className={classes.Heading}>{props.result.date ? <Moment format="DD/MM/YYYY">{props.result.date}</Moment> : 'No Date'}</Typography>
+                        </div>
+                        <div className={classes.column}>
+                        </div>
+                        {props.result.venue}
+                        <div className={classes.column} />
+                        {props.result.ruleset}
+                        <div className={classes.column}>
+                        </div>
+                        <div className={clsx(classes.column, classes.helper)}>
+                            £{props.result.pot}
+                        </div>
+                    </ExpansionPanelDetails>
+                </ExpansionPanel>
+            </div>
+        </Container>
 
-        )
-    })
+    )
     
-        
-    );
 }

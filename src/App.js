@@ -1,5 +1,7 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { getChallenges, getPlayers, getResults } from './store/actions/Actions';
 import { LeagueTable } from './components/leagueTable/LeagueTable';
 import { Players } from './components/players/Players';
 import { ViewResults } from './components/results/ViewResults';
@@ -22,6 +24,14 @@ function App() {
       textTransform: 'capitalize',
     },
   });
+
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(getPlayers())
+    dispatch(getResults())
+    dispatch(getChallenges())
+  }, [dispatch])
 
   const classes = useStyles();
   return (

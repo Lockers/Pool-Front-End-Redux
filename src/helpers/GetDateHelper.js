@@ -1,6 +1,4 @@
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { getPlayers } from '../store/actions/Actions';
+import { useSelector } from 'react-redux';
 
 export const useGetDateHelper = () => {
     const columns = [
@@ -17,12 +15,6 @@ export const useGetDateHelper = () => {
     }
 
     const players = useSelector(state => state.players)
-    const dispatch = useDispatch()
-    
-
-    useEffect(() => {
-        dispatch(getPlayers())
-    }, [dispatch])
 
     const rows = []
     players.map(player => {

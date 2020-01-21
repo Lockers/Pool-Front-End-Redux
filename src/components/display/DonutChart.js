@@ -56,7 +56,6 @@ export default class Example extends PureComponent {
             activeIndex: 0,
         };
     }
-  
     onPieEnter = (data, index) => {
         this.setState({
             activeIndex: index,
@@ -65,6 +64,7 @@ export default class Example extends PureComponent {
     
     render() {
         return (
+            
             <PieChart width={500} height={300}>
                 <Pie
                     activeIndex={this.state.activeIndex}
