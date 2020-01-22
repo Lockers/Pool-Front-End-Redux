@@ -3,6 +3,8 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { getChallenges, getPlayers, getResults } from './store/actions/Actions';
 import { LeagueTable } from './components/leagueTable/LeagueTable';
+import PrivateRoute from './auth/PrivateRoute';
+import { AdminContainer } from './components/admin/AdminContainer';
 import { Players } from './components/players/Players';
 import { ViewResults } from './components/results/ViewResults';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -52,6 +54,7 @@ function App() {
             <Route exact path="/challenges" component={ViewChallenges} />
             <Route exact path="/dashboard" component={DashBoard} />
             <Route exact path="/rules" component={Rules} />
+            <PrivateRoute path='/admin' component={AdminContainer} />
             <Redirect to='/leaguetable'/>
           </Switch>
           <BottomNav />
