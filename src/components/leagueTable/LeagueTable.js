@@ -13,7 +13,9 @@ export const LeagueTable = () => {
     const populateLeague = usePopulateLeague()
 
     return (
+        
         <Table stickyHeader aria-label="sticky table">
+            lol
             <TableHead>
                 <TableRow>
                     {populateLeague.columns.map(column => (
@@ -22,6 +24,7 @@ export const LeagueTable = () => {
                             align={column.align}
                             style={{ minWidth: column.minWidth }}
                         >
+                            ///////////
                             {column.label}
                         </TableCell>
                     ))}
