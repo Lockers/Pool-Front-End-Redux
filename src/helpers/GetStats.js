@@ -1,4 +1,4 @@
-import React from 'react'
+
 
 export const useGetStats = (results) => {
     // Get venues or rulesets played and set to format for pie chart ({name: '', value: 1}) 
@@ -21,8 +21,53 @@ export const useGetStats = (results) => {
         return stats
     }
 
+    const getIndividualStats = (player, stat) => {
+        let stats = []
+        let count = 0
+        stat.forEach(item => {
+            console.log(item)
+            player.results.forEach(result => {
+                if (item === result.venue) {
+                    count = count + 1
+                }
+                if (item === result.ruleset) {
+                    count = count + 1
+                }
+            })
+            stats.push({ name: item, value: count })
+            count = 0
+        })
+        return stats
+    }
+
     // Use results to loop over and return whether challengers or challenged player won
     const getChallengesWon = (results) => {
+        console.log(results.name)
+        if (results.name) {
+            let data = []
+            let counter = 0
+            let counter1 = 0
+            results.results.forEach(result => {
+                if (result.challenger === results.name) {
+                    if (result.challengerScore > result.challengedScore) {
+                        data = [
+                            { name: 'Challenger won', value: counter = counter + 1 },
+                            { name: 'Challenged won', value: counter1}
+                        ]
+                    }
+                }
+                if (result.challenged === results.name) {
+                    if (result.challengedScore > result.challengerScore) {
+                        data = [
+                            { name: 'Challenger won', value: counter},
+                            { name: 'Challenged won', value: counter1 = counter1 + 1 }
+                        ]
+                    }
+                }
+                })
+            return data
+
+        }
         let data = []
         let counter = 0
         results.forEach(result => {
@@ -32,7 +77,7 @@ export const useGetStats = (results) => {
                     { name: 'Challenged Won', value: results.length - counter }
                 ]
             }
-            
+
         })
         return data
     }
@@ -107,6 +152,7 @@ export const useGetStats = (results) => {
         getChallengesWon,
         amountPlayedFor,
         getHighestChallenger,
-        getMostChallenged
+        getMostChallenged,
+        getIndividualStats
     }
 }

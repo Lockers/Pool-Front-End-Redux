@@ -1,6 +1,9 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { usePlayerCardHelper } from '../../helpers/PlayerCardHelper';
+import { venues, rulesets } from '../../helpers/Data';
 import { makeStyles } from '@material-ui/core/styles';
+import { useGetStats } from '../../helpers/GetStats';
+import PieChart from '../display/DonutChart';
 import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
@@ -14,13 +17,14 @@ import { red } from '@material-ui/core/colors';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import Button from '@material-ui/core/Button';
-import ResultsList  from '../../components/display/ResultsList';
+import ResultsList from '../../components/display/ResultsList';
+import { Container } from '@material-ui/core';
 
 //Styles for player cards and expanding buttons
 
 const useStyles = makeStyles(theme => ({
     card: {
-        maxWidth: 345,
+        maxWidth: 500,
         margin: '0 auto',
         marginTop: '3rem',
         color: 'blue',
@@ -39,12 +43,12 @@ const useStyles = makeStyles(theme => ({
         }),
         margin: '0 auto',
         textAlign: 'center',
-       
+
     },
     expandOpen: {
         margin: '0 auto',
         textAlign: 'center',
-        
+
     },
     avatar: {
         backgroundColor: red[500],
@@ -52,7 +56,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export const PlayerCard = (props) => {
-    
+
     //import Classes for styles
 
     const classes = useStyles();
@@ -60,6 +64,9 @@ export const PlayerCard = (props) => {
     //Set State for two expanding click handlers
     const [expanded, setExpanded] = useState(false);
     const [expanded1, setExpanded1] = useState(false)
+    const stats = useGetStats(props.player.results)
+    // const obj = stats.getHighestChallenger(players)
+    // const mostchallenged = stats.getMostChallenged(props.player)
 
     //Set results array from props and reverse array to get latest results first
     const [resultArray] = useState([...props.player.results].reverse())
@@ -84,7 +91,7 @@ export const PlayerCard = (props) => {
         return <div>Loading</div>
     }
 
-    
+
 
     //Returns Material UI Card with player details, form.... TODO Stats
     return (
@@ -142,11 +149,24 @@ export const PlayerCard = (props) => {
                     </CardContent>
                 </Collapse>
                 <Collapse in={expanded1} timeout="auto" unmountOnExit>
-                    <CardContent>
-                        <div>Individual User Dash</div>
-                    </CardContent>
+                    <Container style={{ margin: '0 auto' }}>
+                        <CardContent style={{ margin: '0 auto' }}>
+                            <h1>Dashboard</h1>
+                            <h3>Venues Used</h3>
+                            <PieChart stats={stats.getIndividualStats(props.player, venues)} />
+
+                            <h3>Rulesets Played</h3>
+                            <PieChart stats={stats.getIndividualStats(props.player, rulesets)} />
+
+                            <h3>Total Games Played: {props.player.results.length} </h3>
+                            <PieChart stats={stats.getChallengesWon(props.player)} />
+
+                            <h4>Total Prize Money Played for: £{stats.amountPlayedFor}</h4>
+                            <h4>Average Pot: £{Math.round(stats.amountPlayedFor / props.player.results.length)}</h4>
+                        </CardContent>
+                    </Container>
                 </Collapse>
             </Card>
-        </div>
+        </div >
     );
 }
