@@ -21,8 +21,8 @@ import {
 
 import axios from 'axios';
 
-// const baseUrl = 'https://telford-pool-back-end.herokuapp.com/';
-const baseUrl = 'http://localhost:5000/'
+const baseUrl = 'https://telford-pool-back-end.herokuapp.com/';
+// const baseUrl = 'http://localhost:5000/'
 
 export const getPlayers = () => dispatch => {
     console.log(' get players firing')
