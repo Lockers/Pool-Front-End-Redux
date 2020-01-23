@@ -1,6 +1,7 @@
 import { useSelector } from 'react-redux';
 
-export const useGetDateHelper = () => {
+export const usePopulateLeague = () => {
+    //Builds data to use in league table. Columns for labels and createData populates with data
     const columns = [
         { id: 'leaguePosition', label: 'Pos', minWidth: 50 },
         { id: 'name', label: 'Name', minWidth: 100 },
@@ -8,16 +9,20 @@ export const useGetDateHelper = () => {
         { id: 'won', label: 'W', minWidth: 50, align: 'right' },
         { id: 'lost', label: 'L', minWidth: 50, align: 'right' },
         { id: 'daysLeft', label: 'Days Left', minWidth: 50, align: 'right' },
+        { id: 'hours', label: 'Challenge', minWidth: 50, align: 'right' }
     ];
 
-    function createData(leaguePosition, name, played, won, lost, challengable, daysLeft) {
-        return { leaguePosition, name, played, won, lost, challengable, daysLeft };
+    function createData(leaguePosition, name, played, won, lost, challengable, daysLeft, hours) {
+        return { leaguePosition, name, played, won, lost, challengable, daysLeft, hours };
     }
 
     const players = useSelector(state => state.players)
 
     const rows = []
+    
+    //Gets date from last result to calculate days left for challenge.. set at 30 to count down
     players.map(player => {
+        console.log(player)
         if (player.results.length > 0) {
             const hi = new Date(Date.parse(player.results.slice(-1)[0].date)).toString();
             const lol = Date.parse(hi)
@@ -26,7 +31,21 @@ export const useGetDateHelper = () => {
             const daysLeft = newDate - lol
             const sum = 30 - (daysLeft / (60 * 60 * 24 * 1000))
             const days = Math.round(sum)
-            return rows.push(createData(player.leaguePosition, player.name, player.played, player.won, player.lost, player.challengable, days))
+
+            if (player.name === player.results.slice(-1)[0].challenged) {
+                let hours = 0
+                const time = new Date(player.results.slice(-1)[0].date).getTime();
+                const now = new Date().getTime();
+                const timeleft = now - time;
+                hours = (timeleft / (1000 * 60 * 60)).toFixed(1);
+                 if (hours < 48) {
+                    hours = Math.round(48 - hours)
+                }
+                if (hours > 48) {
+                    hours = 0
+                }
+                return rows.push(createData(player.leaguePosition, player.name, player.played, player.won, player.lost, player.challengable, days, hours))
+            }
 
         }
         const hi = new Date(Date.parse(player.createdAt.slice(-1)[0].date)).toString();
@@ -40,8 +59,9 @@ export const useGetDateHelper = () => {
             days = 0;
         }
 
-        return rows.push(createData(player.leaguePosition, player.name, player.played, player.won, player.lost, player.challengable, days))
+        return rows.push(createData(player.leaguePosition, player.name, player.played, player.won, player.lost, player.challengable, days, 0))
 
     })
+
     return { rows, columns }
 }

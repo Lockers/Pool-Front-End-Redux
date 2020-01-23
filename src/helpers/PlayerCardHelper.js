@@ -2,6 +2,7 @@
 
 export const usePlayerCardHelper = () => {
 
+    //Get for of player by checking if they won, and then adding a W or L to array.. then return that array with last 6 results as W or L
     const getForm = (array, props) => {
         const newArray = []
 

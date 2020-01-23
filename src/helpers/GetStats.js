@@ -1,5 +1,3 @@
-
-
 export const useGetStats = (results) => {
     // Get venues or rulesets played and set to format for pie chart ({name: '', value: 1}) 
     const getStats = (stat) => {
@@ -21,11 +19,11 @@ export const useGetStats = (results) => {
         return stats
     }
 
+    //Get Rulesets / venues played for individual stat page, using player and venue/ruleset data array
     const getIndividualStats = (player, stat) => {
         let stats = []
         let count = 0
         stat.forEach(item => {
-            console.log(item)
             player.results.forEach(result => {
                 if (item === result.venue) {
                     count = count + 1
@@ -43,6 +41,8 @@ export const useGetStats = (results) => {
     // Use results to loop over and return whether challengers or challenged player won
     const getChallengesWon = (results) => {
         console.log(results.name)
+
+        //For individual stats page, using name to compare
         if (results.name) {
             let data = []
             let counter = 0
@@ -70,6 +70,8 @@ export const useGetStats = (results) => {
         }
         let data = []
         let counter = 0
+
+        //For main dashboard using all results
         results.forEach(result => {
             if (result.challengerScore > result.challengedScore) {
                 data = [
@@ -86,6 +88,8 @@ export const useGetStats = (results) => {
         return accumulator + currentValue.pot
     }, 0)
 
+
+    //Get person with highest number of challenges
     const getHighestChallenger = (players) => {
         let count = 0
         let data = []
@@ -104,6 +108,7 @@ export const useGetStats = (results) => {
         return data[0]
     }
 
+    //copy paste code from net coz I was a bit lazy, to pull out single person with highest number of challenges from sorted array
     function compareValues(key, order = 'asc') {
         return function innerSort(a, b) {
             if (!a.hasOwnProperty(key) || !b.hasOwnProperty(key)) {
@@ -128,6 +133,7 @@ export const useGetStats = (results) => {
         };
     }
 
+    //Get most challenged player, same was as challenger, will refactor this at some point coz its a bit long winded
     const getMostChallenged = (players) => {
         let count = 0
         let data = []
@@ -146,7 +152,6 @@ export const useGetStats = (results) => {
         return data[0]
     }
 
-    // const max = getmostChallengedPlayer(players)
     return {
         getStats,
         getChallengesWon,
