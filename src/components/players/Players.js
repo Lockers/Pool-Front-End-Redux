@@ -12,7 +12,7 @@ export const Players = () => {
 
     const changeHandler = (e) => {
         e.preventDefault()
-        setFilterPlayers(players.filter(player => player.name.toLowerCase().includes(e.target.value)))
+        setFilterPlayers(players.filter(player => player.name.toLowerCase().includes(e.target.value.toLowerCase())))
     }
     //Map over players and create Player card per player
     return (

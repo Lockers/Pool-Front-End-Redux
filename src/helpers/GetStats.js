@@ -40,8 +40,7 @@ export const useGetStats = (results) => {
 
     // Use results to loop over and return whether challengers or challenged player won
     const getChallengesWon = (results) => {
-        console.log(results.name)
-
+        
         //For individual stats page, using name to compare
         if (results.name) {
             let data = []

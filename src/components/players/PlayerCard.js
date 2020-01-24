@@ -16,6 +16,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Button from '@material-ui/core/Button';
 import ResultsList from '../../components/display/ResultsList';
 import { Container, Divider } from '@material-ui/core';
+import { useGetHoursLeft } from '../../helpers/GetHoursLeft';
 
 //Styles for player cards and expanding buttons
 
@@ -63,7 +64,8 @@ export const PlayerCard = (props) => {
     const [expanded, setExpanded] = useState(false);
     const [expanded1, setExpanded1] = useState(false)
     const stats = useGetStats(props.player.results)
-
+    const hoursLeft = useGetHoursLeft(props.player)
+    
     //Set results array from props and reverse array to get latest results first
     const [resultArray] = useState([...props.player.results].reverse())
 
@@ -98,7 +100,7 @@ export const PlayerCard = (props) => {
         <div>
             <Card className={classes.card}>
                 <CardHeader />
-                <Typography variant="h6" color="inherit" component="div">{props.player.name}
+                <Typography variant="h6" color="inherit" component="div">{props.player.name} 
                 </Typography>
                 <Divider style={{ marginTop: '1rem'}}/>
                 <CardContent>
@@ -108,6 +110,7 @@ export const PlayerCard = (props) => {
                         <p>Won: {props.player.won}</p>
                         <p>Win Percentage: {winPercentage}%</p>
                         <p>Form {playerHelper.getForm(resultArray, props)} </p>
+                        <p>Cannot Challenge for {hoursLeft.hours(props.player)} Hours</p>
 
                     </Typography>
                 </CardContent>
