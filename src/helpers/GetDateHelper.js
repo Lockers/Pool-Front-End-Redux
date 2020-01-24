@@ -22,24 +22,23 @@ export const usePopulateLeague = () => {
     
     //Gets date from last result to calculate days left for challenge.. set at 30 to count down
     players.map(player => {
-        console.log(player)
         if (player.results.length > 0) {
-            const hi = new Date(Date.parse(player.results.slice(-1)[0].date)).toString();
-            const lol = Date.parse(hi)
-            const newDate = Date.now();
+            let days = 0
+            const time = new Date(player.results.slice(-1)[0].date).getTime();
+            const now = new Date().getTime();
+            const daysLeft = now - time;
 
-            const daysLeft = newDate - lol
             const sum = 30 - (daysLeft / (60 * 60 * 24 * 1000))
-            const days = Math.round(sum)
+            days = Math.ceil(sum)
 
-            if (player.name === player.results.slice(-1)[0].challenged) {
+            if (player.name === player.results.slice(-1)[0].challenged || player.name === player.results.slice(-1)[0].challenger) {
                 let hours = 0
                 const time = new Date(player.results.slice(-1)[0].date).getTime();
                 const now = new Date().getTime();
                 const timeleft = now - time;
                 hours = (timeleft / (1000 * 60 * 60)).toFixed(1);
                  if (hours < 48) {
-                    hours = Math.round(48 - hours)
+                     hours = Math.ceil((48 - hours) + 24)
                 }
                 if (hours > 48) {
                     hours = 0
@@ -48,13 +47,12 @@ export const usePopulateLeague = () => {
             }
 
         }
-        const hi = new Date(Date.parse(player.createdAt.slice(-1)[0].date)).toString();
-        const lol = Date.parse(hi)
-        const newDate = Date.now();
+        const time = new Date(player.createdAt).getTime();
+        const now = new Date().getTime();
+        const daysLeft = now - time;
 
-        const daysLeft = newDate - lol
         const sum = 30 - (daysLeft / (60 * 60 * 24 * 1000))
-        let days = Math.round(sum)
+        let days = Math.ceil(sum)
         if (isNaN(days)) {
             days = 0;
         }

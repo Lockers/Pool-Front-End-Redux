@@ -14,29 +14,9 @@ code {
     monospace;
 }
 
-.makeStyles-toolbar-5 {
-  background-color: lightblue;
-  text-align: center;
-  font-size: 20px;
-  margin: 0 auto;
-  padding: 0 rem;
-}
-
-.MuiContainer-root {
-  margin-top: 5rem;
-}
-
-.MuiListItemText-root {
-  text-align: center;
-}
-
-.MuiListItemButton {
-  color: white;
-}
-
 a.active {
   text-decoration: none;
-  color: grey;
+  background-color: darkblue;
   margin: 0 auto;
   font-size: 20px;
 }

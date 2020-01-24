@@ -10,24 +10,22 @@ import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import Collapse from '@material-ui/core/Collapse';
-import Avatar from '@material-ui/core/Avatar';
-import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import { red } from '@material-ui/core/colors';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
 import Button from '@material-ui/core/Button';
 import ResultsList from '../../components/display/ResultsList';
-import { Container } from '@material-ui/core';
+import { Container, Divider } from '@material-ui/core';
 
 //Styles for player cards and expanding buttons
 
 const useStyles = makeStyles(theme => ({
     card: {
         maxWidth: 500,
+        height: 'auto',
         margin: '0 auto',
         marginTop: '3rem',
-        color: 'blue',
+        color: '#01618C',
         fontWeight: 'bolder',
         textAlign: 'center',
     },
@@ -65,8 +63,6 @@ export const PlayerCard = (props) => {
     const [expanded, setExpanded] = useState(false);
     const [expanded1, setExpanded1] = useState(false)
     const stats = useGetStats(props.player.results)
-    // const obj = stats.getHighestChallenger(players)
-    // const mostchallenged = stats.getMostChallenged(props.player)
 
     //Set results array from props and reverse array to get latest results first
     const [resultArray] = useState([...props.player.results].reverse())
@@ -79,11 +75,17 @@ export const PlayerCard = (props) => {
 
     //Handles button expand click
     const handleResultsExpandClick = () => {
+        if (expanded1) {
+            setExpanded1(!expanded1)
+        }
         setExpanded(!expanded);
     };
 
     //Handles Stats Expand click
     const handleStatsExpandClick = () => {
+        if (expanded) {
+            setExpanded(!expanded)
+        }
         setExpanded1(!expanded1);
     };
 
@@ -91,27 +93,16 @@ export const PlayerCard = (props) => {
         return <div>Loading</div>
     }
 
-
-
     //Returns Material UI Card with player details, form.... TODO Stats
     return (
         <div>
             <Card className={classes.card}>
-                <CardHeader
-                    avatar={
-                        <Avatar aria-label="recipe" className={classes.avatar}>
-
-                        </Avatar>
-                    }
-                    action={
-                        <IconButton aria-label="settings">
-                            <MoreVertIcon />
-                        </IconButton>
-                    }
-                    title={props.player.name}
-                />
+                <CardHeader />
+                <Typography variant="h6" color="inherit" component="div">{props.player.name}
+                </Typography>
+                <Divider style={{ marginTop: '1rem'}}/>
                 <CardContent>
-                    <Typography variant="body2" color="secondary" component="div">
+                    <Typography variant="h6" color="inherit" component="div">
                         <p>League Position: {props.player.leaguePosition}</p>
                         <p>Played: {props.player.played}</p>
                         <p>Won: {props.player.won}</p>
@@ -133,10 +124,10 @@ export const PlayerCard = (props) => {
                     </Button>
                     <Button variant='contained' color='primary'
                         className={clsx(classes.expand, {
-                            [classes.expandOpen]: expanded,
+                            [classes.expandOpen]: expanded1,
                         })}
                         onClick={handleStatsExpandClick}
-                        aria-expanded={expanded}
+                        aria-expanded={expanded1}
                         aria-label="show more"
                     >Stats
                         <ExpandMoreIcon />

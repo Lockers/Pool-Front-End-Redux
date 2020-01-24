@@ -15,7 +15,6 @@ export const LeagueTable = () => {
     return (
         
         <Table stickyHeader aria-label="sticky table">
-            lol
             <TableHead>
                 <TableRow>
                     {populateLeague.columns.map(column => (
@@ -24,7 +23,6 @@ export const LeagueTable = () => {
                             align={column.align}
                             style={{ minWidth: column.minWidth }}
                         >
-                            ///////////
                             {column.label}
                         </TableCell>
                     ))}
@@ -33,7 +31,7 @@ export const LeagueTable = () => {
             <TableBody>
                 {populateLeague.rows.map(row => {
                     return (
-                        <TableRow hover role="checkbox" tabIndex={-1} key={uuid(5)} style={row.challengable ? { backgroundColor: 'lightgreen' } : { backgroundColor: 'orange' }}>
+                        <TableRow hover role="checkbox" tabIndex={-1} key={uuid(5)} style={row.challengable ? { backgroundColor: 'royalblue' } : { backgroundColor: 'red' }}>
                             {populateLeague.columns.map((column, index) => {
                                 const value = row[column.id];
                                 return (

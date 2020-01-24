@@ -16,35 +16,63 @@ import { NavLink } from 'react-router-dom';
 import uuid from 'uuid'
 import '../../src/index.css'
 
-const drawerWidth = 240;
+const drawerWidth = 150;
 
 const useStyles = makeStyles(theme => ({
     root: {
         display: 'flex',
-        margin: '1rem',
+        margin: '1rem auto',
     },
     drawer: {
         [theme.breakpoints.up('sm')]: {
             width: drawerWidth,
             flexShrink: 0,
+            margin: '0 auto',
+            backgroundColor: 'royalblue',
+            textAlign: 'center'
+        },
+        [theme.breakpoints.up('xl')]: {
+            width: `calc(100% - ${drawerWidth}px)`,
+            marginLeft: drawerWidth,
+            margin: '0 auto',
+            backgroundColor: 'royalblue',
+            textAlign: 'center'
         },
     },
     appBar: {
         [theme.breakpoints.up('sm')]: {
             width: `calc(100% - ${drawerWidth}px)`,
             marginLeft: drawerWidth,
+            margin: '0 auto',
+            backgroundColor: 'royalblue',
+            textAlign: 'center'
         },
         [theme.breakpoints.up('xl')]: {
             width: `calc(100% - ${drawerWidth}px)`,
             marginLeft: drawerWidth,
+            margin: '0 auto',
+            backgroundColor: 'royalblue',
+            textAlign: 'center'
         },
-        backgroundColor: 'green',
+        margin: '0 auto',
+        backgroundColor: 'royalblue',
+        textAlign: 'center'
 
     },
     menuButton: {
-        margin: theme.spacing(2),
+        margin: theme.spacing(0),
         [theme.breakpoints.up('sm')]: {
             display: 'none',
+            margin: '0 auto',
+            backgroundColor: 'royalblue',
+            textAlign: 'center'
+        },
+        [theme.breakpoints.up('xl')]: {
+            width: `calc(100% - ${drawerWidth}px)`,
+            marginLeft: drawerWidth,
+            margin: '0 auto',
+            backgroundColor: 'royalblue',
+            textAlign: 'center'
         },
 
 
@@ -52,14 +80,13 @@ const useStyles = makeStyles(theme => ({
     toolbar: theme.mixins.toolbar,
     drawerPaper: {
         width: drawerWidth,
-        backgroundColor: 'green',
+        backgroundColor: 'royalblue',
         color: 'white',
 
     },
-    backgroundColor: 'green',
     content: {
         flexGrow: 1,
-        padding: theme.spacing(3),
+        padding: theme.spacing(1),
     },
 }));
 
@@ -78,7 +105,7 @@ function ResponsiveDrawer(props) {
         return removed.toUpperCase()
     }
 
-    const links = ['/leaguetable', '/players', '/results', '/challenges', '/dashboard', '/rules', '/admin']
+    const links = ['/table', '/players', '/results', '/challenges', '/dashboard', '/rules', '/admin']
     const drawer = (
         <div>
             <div className={classes.toolbar} />
