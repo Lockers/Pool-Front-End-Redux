@@ -19,8 +19,12 @@ import { Rules } from './components/rules/Rules';
 function App() {
   const useStyles = makeStyles({
     root: {
-      background: '#e0ebeb',
-      color: 'blue'
+      margin: '0 auto',
+      display: 'flex',
+      flexDirection: "column",
+      justifyContent: 'center',
+      alignContent: 'center',
+      color: 'blue',
     },
     label: {
       textTransform: 'capitalize',
@@ -40,9 +44,6 @@ function App() {
   
   return (
     <div>
-
-
-      return (
         <React.Fragment>
         <CssBaseline />
         <Container classes={{

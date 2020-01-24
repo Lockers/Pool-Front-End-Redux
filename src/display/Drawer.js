@@ -21,72 +21,50 @@ const drawerWidth = 150;
 const useStyles = makeStyles(theme => ({
     root: {
         display: 'flex',
-        margin: '1rem auto',
+        marginBottom: '4rem',
     },
     drawer: {
         [theme.breakpoints.up('sm')]: {
             width: drawerWidth,
-            flexShrink: 0,
-            margin: '0 auto',
             backgroundColor: 'royalblue',
-            textAlign: 'center'
         },
         [theme.breakpoints.up('xl')]: {
             width: `calc(100% - ${drawerWidth}px)`,
             marginLeft: drawerWidth,
-            margin: '0 auto',
-            backgroundColor: 'royalblue',
-            textAlign: 'center'
         },
     },
     appBar: {
+        display: 'flex',
         [theme.breakpoints.up('sm')]: {
             width: `calc(100% - ${drawerWidth}px)`,
             marginLeft: drawerWidth,
-            margin: '0 auto',
-            backgroundColor: 'royalblue',
-            textAlign: 'center'
         },
         [theme.breakpoints.up('xl')]: {
             width: `calc(100% - ${drawerWidth}px)`,
             marginLeft: drawerWidth,
-            margin: '0 auto',
-            backgroundColor: 'royalblue',
-            textAlign: 'center'
         },
-        margin: '0 auto',
-        backgroundColor: 'royalblue',
-        textAlign: 'center'
-
+        
+ 
     },
     menuButton: {
         margin: theme.spacing(0),
         [theme.breakpoints.up('sm')]: {
-            display: 'none',
-            margin: '0 auto',
             backgroundColor: 'royalblue',
-            textAlign: 'center'
         },
         [theme.breakpoints.up('xl')]: {
             width: `calc(100% - ${drawerWidth}px)`,
-            marginLeft: drawerWidth,
-            margin: '0 auto',
             backgroundColor: 'royalblue',
-            textAlign: 'center'
         },
-
-
     },
     toolbar: theme.mixins.toolbar,
     drawerPaper: {
-        width: drawerWidth,
+        width: '80%',
         backgroundColor: 'royalblue',
         color: 'white',
-
     },
     content: {
-        flexGrow: 1,
-        padding: theme.spacing(1),
+        flexGrow: 0,
+        padding: theme.spacing(0),
     },
 }));
 
@@ -122,7 +100,7 @@ function ResponsiveDrawer(props) {
     return (
         <div className={classes.root}>
             <CssBaseline />
-            <AppBar position="fixed" className={classes.appBar}>
+            <AppBar position='relative' className={classes.appBar}>
                 <Toolbar>
                     <IconButton
                         color="inherit"

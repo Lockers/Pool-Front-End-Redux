@@ -65,13 +65,13 @@ export default class Example extends PureComponent {
     render() {
         return (
             
-            <PieChart width={400} height={300}>
+            <PieChart width={350} height={250}>
                 <Pie
                     activeIndex={this.state.activeIndex}
                     activeShape={renderActiveShape}
                     data={this.props.stats}
-                    cx={150}
-                    cy={150}
+                    cx={125}
+                    cy={175}
                     innerRadius={60}
                     outerRadius={80}
                     fill={'blue'}

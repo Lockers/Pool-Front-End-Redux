@@ -24,7 +24,8 @@ import Example from '../display/DonutChart';
 
 const useStyles = makeStyles(theme => ({
     root: {
-      width: 500,  
+        width: 500, 
+        margin: '0 auto',  
     },
     card: {
         display: 'flex',
