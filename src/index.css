@@ -30,3 +30,8 @@ a.active {
 }
 :any-link:active {color: blue}
 
+.recharts-wrapper {
+  display: flex;
+  margin: 0 auto!important;
+}
+
