@@ -22,6 +22,7 @@ const useStyles = makeStyles(theme => ({
     root: {
         display: 'flex',
         marginBottom: '4rem',
+        fontSize: '8px'
     },
     drawer: {
         [theme.breakpoints.up('sm')]: {
@@ -35,6 +36,7 @@ const useStyles = makeStyles(theme => ({
     },
     appBar: {
         display: 'flex',
+        fontSize: '20px',
         [theme.breakpoints.up('sm')]: {
             width: `calc(100% - ${drawerWidth}px)`,
             marginLeft: drawerWidth,
@@ -56,11 +58,14 @@ const useStyles = makeStyles(theme => ({
             backgroundColor: 'royalblue',
         },
     },
+
     toolbar: theme.mixins.toolbar,
     drawerPaper: {
         width: '80%',
         backgroundColor: 'royalblue',
         color: 'white',
+        fontSize: '10px',
+        margin: '0 auto'
     },
     content: {
         flexGrow: 0,
@@ -101,7 +106,7 @@ function ResponsiveDrawer(props) {
         <div className={classes.root}>
             <CssBaseline />
             <AppBar position='relative' className={classes.appBar}>
-                <Toolbar>
+                <Toolbar disableGutters='true' variant='dense'>
                     <IconButton
                         color="inherit"
                         aria-label="open drawer"
@@ -111,8 +116,8 @@ function ResponsiveDrawer(props) {
                     >
                         <MenuIcon />
                     </IconButton>
-                    <Typography variant="h6" noWrap>
-                        Telford 8 Ball Ladder League
+                    <Typography variant="p" noWrap='false' align='right'>
+                        <p>Telford 8 Ball Ladder League</p>
                     </Typography>
                 </Toolbar>
             </AppBar>

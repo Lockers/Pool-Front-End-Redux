@@ -18,7 +18,6 @@ import ResultsList from '../../components/display/ResultsList';
 import { Container, Divider } from '@material-ui/core';
 import { useGetHoursLeft } from '../../helpers/GetHoursLeft';
 import { ResponsiveContainer } from 'recharts';
-import Example from '../display/DonutChart';
 
 //Styles for player cards and expanding buttons
 

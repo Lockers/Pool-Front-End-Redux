@@ -16,7 +16,7 @@ export const Players = () => {
     }
     //Map over players and create Player card per player
     return (
-        <div>
+        <div styles={{margin: '0 auto'}}>
                 <TextField style={{marginTop: '1rem'}}
                     id="outlined-helperText"
                     label="Search-Player"
