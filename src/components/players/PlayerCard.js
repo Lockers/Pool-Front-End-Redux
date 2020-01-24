@@ -23,8 +23,14 @@ import Example from '../display/DonutChart';
 //Styles for player cards and expanding buttons
 
 const useStyles = makeStyles(theme => ({
+    root: {
+      width: 500,  
+    },
     card: {
-        maxWidth: 500,
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        maxWidth: 450,
         height: 'auto',
         margin: '0 auto',
         marginTop: '3rem',
@@ -32,10 +38,7 @@ const useStyles = makeStyles(theme => ({
         fontWeight: 'bolder',
         textAlign: 'center',
     },
-    media: {
-        height: 0,
-        paddingTop: '56.25%', // 16:9
-    },
+ 
     expand: {
         transform: 'rotate(deg)',
         marginLeft: 'auto',
@@ -47,9 +50,7 @@ const useStyles = makeStyles(theme => ({
 
     },
     expandOpen: {
-        margin: '0 auto',
-        textAlign: 'center',
-
+        width: 200
     },
     avatar: {
         backgroundColor: red[500],
@@ -99,7 +100,7 @@ export const PlayerCard = (props) => {
 
     //Returns Material UI Card with player details, form.... TODO Stats
     return (
-        <div styles={{margin: '0 auto'}}>
+        <div>
             <Card className={classes.card}>
                 <CardHeader />
                 <Typography variant="h6" color="inherit" component="div">{props.player.name} 
@@ -149,9 +150,9 @@ export const PlayerCard = (props) => {
                         <CardContent>
                             <h1>Dashboard</h1>
                             <h3>Venues Used</h3>
-                
-                            <PieChart stats={stats.getIndividualStats(props.player, venues)} />
-                    
+                            <ResponsiveContainer height={300} width={400}>
+                                <PieChart stats={stats.getIndividualStats(props.player, venues)} />
+                            </ResponsiveContainer>
                             <h3>Rulesets Played</h3>
                             <PieChart stats={stats.getIndividualStats(props.player, rulesets)} />
 
