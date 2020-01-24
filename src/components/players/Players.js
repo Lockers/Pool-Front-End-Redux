@@ -17,14 +17,12 @@ export const Players = () => {
     //Map over players and create Player card per player
     return (
         <div>
-            <form>
                 <TextField style={{marginTop: '1rem'}}
                     id="outlined-helperText"
                     label="Search-Player"
                     variant="outlined"
                     onChange={changeHandler}
                 />
-            </form>
             {filterPlayers.length > 0 ? filterPlayers.map((player, index) => <PlayerCard player={player} key={index} />) : players.map((player, index) => <PlayerCard player={player} key={index} />)}
         </div>
     )

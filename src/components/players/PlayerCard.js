@@ -17,6 +17,8 @@ import Button from '@material-ui/core/Button';
 import ResultsList from '../../components/display/ResultsList';
 import { Container, Divider } from '@material-ui/core';
 import { useGetHoursLeft } from '../../helpers/GetHoursLeft';
+import { ResponsiveContainer } from 'recharts';
+import Example from '../display/DonutChart';
 
 //Styles for player cards and expanding buttons
 
@@ -97,7 +99,7 @@ export const PlayerCard = (props) => {
 
     //Returns Material UI Card with player details, form.... TODO Stats
     return (
-        <div>
+        <div styles={{margin: '0 auto'}}>
             <Card className={classes.card}>
                 <CardHeader />
                 <Typography variant="h6" color="inherit" component="div">{props.player.name} 
@@ -143,12 +145,13 @@ export const PlayerCard = (props) => {
                     </CardContent>
                 </Collapse>
                 <Collapse in={expanded1} timeout="auto" unmountOnExit>
-                    <Container style={{ margin: '0 auto' }}>
-                        <CardContent style={{ margin: '0 auto' }}>
+                    <Container>
+                        <CardContent>
                             <h1>Dashboard</h1>
                             <h3>Venues Used</h3>
+                
                             <PieChart stats={stats.getIndividualStats(props.player, venues)} />
-
+                    
                             <h3>Rulesets Played</h3>
                             <PieChart stats={stats.getIndividualStats(props.player, rulesets)} />
 

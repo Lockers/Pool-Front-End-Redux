@@ -45,7 +45,7 @@ function App() {
       return (
         <React.Fragment>
         <CssBaseline />
-        <Container maxWidth="sm" classes={{
+        <Container classes={{
           root: classes.root
         }}>
           <Drawer />
