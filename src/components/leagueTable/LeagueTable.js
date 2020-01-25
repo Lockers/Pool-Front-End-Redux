@@ -9,12 +9,12 @@ import uuid from 'uuid';
 import { usePopulateLeague } from '../../helpers/GetDateHelper';
 
 export const LeagueTable = () => {
-    
+
     const populateLeague = usePopulateLeague()
 
     return (
         
-        <Table stickyHeader aria-label="sticky table">
+        <Table stickyHeader='true' size='medium' padding='default'>
             <TableHead>
                 <TableRow>
                     {populateLeague.columns.map(column => (
@@ -31,7 +31,9 @@ export const LeagueTable = () => {
             <TableBody>
                 {populateLeague.rows.map(row => {
                     return (
-                        <TableRow hover role="checkbox" tabIndex={-1} key={uuid(5)} style={row.challengable ? { backgroundColor: 'royalblue' } : { backgroundColor: 'red' }}>
+                        <TableRow hover role="checkbox" tabIndex={-1}
+                            key={uuid(5)}
+                            style={row.challengable ? { backgroundColor: 'lightgreen' } : row.daysLeft < 0 ? { backgroundColor: 'red' } : {backgroundColor: 'orange'}}>
                             {populateLeague.columns.map((column, index) => {
                                 const value = row[column.id];
                                 return (

@@ -19,6 +19,7 @@ import { Rules } from './components/rules/Rules';
 function App() {
   const useStyles = makeStyles({
     root: {
+      width: '450px',
       margin: '0 auto',
       display: 'flex',
       flexDirection: "column",
