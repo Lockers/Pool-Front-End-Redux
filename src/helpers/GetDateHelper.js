@@ -3,17 +3,15 @@ import { useSelector } from 'react-redux';
 export const usePopulateLeague = () => {
     //Builds data to use in league table. Columns for labels and createData populates with data
     const columns = [
-        { id: 'leaguePosition', label: 'Pos', minWidth: 50 },
-        { id: 'name', label: 'Name', minWidth: 100 },
-        { id: 'played', label: 'P', minWidth: 50 },
-        { id: 'won', label: 'W', minWidth: 50, align: 'right' },
-        { id: 'lost', label: 'L', minWidth: 50, align: 'right' },
-        { id: 'daysLeft', label: 'Days Left', minWidth: 50, align: 'right' },
-        // { id: 'hours', label: 'Challenge', minWidth: 50, align: 'right' }
+        { id: 'leaguePosition', label: 'Pos', minWidth: 50, align: 'center' },
+        { id: 'name', label: 'Name', minWidth: 100, align: 'center' },
+        { id: 'played', label: 'P', minWidth: 50, align: 'center' },
+        { id: 'won', label: 'W', minWidth: 50, align: 'center' },
+        { id: 'daysLeft', label: 'DaysLeft', maxWidth: 25, align: 'center' },
     ];
 
-    function createData(leaguePosition, name, played, won, lost, challengable, daysLeft) {
-        return { leaguePosition, name, played, won, lost, challengable, daysLeft};
+    function createData(leaguePosition, name, played, won, challengable, daysLeft) {
+        return { leaguePosition, name, played, won, challengable, daysLeft};
     }
 
     const players = useSelector(state => state.players)
@@ -30,7 +28,7 @@ export const usePopulateLeague = () => {
 
             const sum = 30 - (daysLeft / (60 * 60 * 24 * 1000))
             days = Math.ceil(sum)
-            return rows.push(createData(player.leaguePosition, player.name, player.played, player.won, player.lost, player.challengable, days))
+            return rows.push(createData(player.leaguePosition, player.name, player.played, player.won, player.challengable, days))
         }
 
         const time = new Date(player.createdAt).getTime();
@@ -42,7 +40,7 @@ export const usePopulateLeague = () => {
         if (isNaN(days)) {
             days = 0;
         }
-        return rows.push(createData(player.leaguePosition, player.name, player.played, player.won, player.lost, player.challengable, days))
+        return rows.push(createData(player.leaguePosition, player.name, player.played, player.won, player.challengable, days))
     })
 
     return { rows, columns }
