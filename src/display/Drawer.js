@@ -83,8 +83,8 @@ function ResponsiveDrawer(props) {
                     >
                         <MenuIcon />
                     </IconButton>
-                    <Typography variant="p" noWrap='false' align='right'>
-                        <p style={{marginLeft: '50px'}}>Telford 8 Ball Ladder League</p>
+                    <Typography variant="p">
+                        <p>Telford 8 Ball Ladder League</p>
                     </Typography>
                 </Toolbar>
             </AppBar>

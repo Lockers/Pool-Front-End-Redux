@@ -17,7 +17,7 @@ export const DashBoard = () => {
         return <h1>Loading</h1>
     }
     return (
-        <Container>
+        <Container styles={{margin: '0 auto'}}>
             <h1>Dashboard</h1>
                 <h3>Venues Used</h3>
                 <PieChart stats={stats.getStats(venues)} />
