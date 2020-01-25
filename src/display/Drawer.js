@@ -16,52 +16,19 @@ import { NavLink } from 'react-router-dom';
 import uuid from 'uuid'
 import '../../src/index.css'
 
-const drawerWidth = 150;
-
 const useStyles = makeStyles(theme => ({
     root: {
         display: 'flex',
         marginBottom: '4rem',
         fontSize: '8px'
     },
-    drawer: {
-        [theme.breakpoints.up('sm')]: {
-            width: drawerWidth,
-            backgroundColor: 'royalblue',
-        },
-        [theme.breakpoints.up('xl')]: {
-            width: `calc(100% - ${drawerWidth}px)`,
-            marginLeft: drawerWidth,
-        },
-    },
-    appBar: {
-        display: 'flex',
-        fontSize: '20px',
-        [theme.breakpoints.up('sm')]: {
-            width: `calc(100% - ${drawerWidth}px)`,
-            marginLeft: drawerWidth,
-        },
-        [theme.breakpoints.up('xl')]: {
-            width: `calc(100% - ${drawerWidth}px)`,
-            marginLeft: drawerWidth,
-        },
-        
- 
-    },
     menuButton: {
         margin: theme.spacing(0),
-        [theme.breakpoints.up('sm')]: {
-            backgroundColor: 'royalblue',
-        },
-        [theme.breakpoints.up('xl')]: {
-            width: `calc(100% - ${drawerWidth}px)`,
-            backgroundColor: 'royalblue',
-        },
     },
 
     toolbar: theme.mixins.toolbar,
     drawerPaper: {
-        width: '80%',
+        width: '35%',
         backgroundColor: 'royalblue',
         color: 'white',
         fontSize: '10px',
@@ -105,7 +72,7 @@ function ResponsiveDrawer(props) {
     return (
         <div className={classes.root}>
             <CssBaseline />
-            <AppBar position='relative' className={classes.appBar}>
+            <AppBar position='relative'>
                 <Toolbar disableGutters='true' variant='dense'>
                     <IconButton
                         color="inherit"
@@ -117,7 +84,7 @@ function ResponsiveDrawer(props) {
                         <MenuIcon />
                     </IconButton>
                     <Typography variant="p" noWrap='false' align='right'>
-                        <p>Telford 8 Ball Ladder League</p>
+                        <p style={{marginLeft: '50px'}}>Telford 8 Ball Ladder League</p>
                     </Typography>
                 </Toolbar>
             </AppBar>
