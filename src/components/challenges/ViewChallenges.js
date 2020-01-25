@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import ResultsList from '../display/ResultsList';
-import { Calender } from './Calender';
+import Calender  from './Calender';
 
 export const ViewChallenges = () => {
 
