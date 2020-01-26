@@ -55,7 +55,7 @@ function ResponsiveDrawer(props) {
         return removed.toUpperCase()
     }
 
-    const links = ['/table', '/players', '/results', '/challenges', '/dashboard', '/rules', '/admin']
+    const links = ['/table', '/players', '/results', '/challenges', '/dashboard', '/rules']
     const drawer = (
         <div>
             <div className={classes.toolbar} />
