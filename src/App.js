@@ -26,7 +26,7 @@ function App() {
       justifyContent: 'center',
       alignContent: 'center',
       color: 'blue',
-    },
+  },
     label: {
       textTransform: 'capitalize',
     },

@@ -94,6 +94,18 @@ export const PlayerCard = (props) => {
         setExpanded1(!expanded1);
     };
 
+    //Gets whether a player can be challenged or issue a challenged (48 hour cooling off period)
+    const getCanBeChallenged = (player, hoursLeft) => {
+        if (player.results[props.player.results.length - 1].challenger === player.name) {
+            if (hoursLeft.hours(props.player) > 0)
+                return <p>Cannot Challenge for {hoursLeft.hours(player)} Hours</p>
+        }
+        if (player.results[props.player.results.length - 1].challenged === player.name) {
+            if (hoursLeft.hours(props.player) > 0)
+                return <p>Cannot be challenged for {hoursLeft.hours(player)} Hours</p>
+        }
+    }
+
     if (!props) {
         return <div>Loading</div>
     }
@@ -113,7 +125,8 @@ export const PlayerCard = (props) => {
                         <p>Won: {props.player.won}</p>
                         <p>Win Percentage: {winPercentage}%</p>
                         <p>Form {playerHelper.getForm(resultArray, props)} </p>
-                        <p>Cannot Challenge for {hoursLeft.hours(props.player)} Hours</p>
+                        {getCanBeChallenged(props.player, hoursLeft)}
+                        
 
                     </Typography>
                 </CardContent>
