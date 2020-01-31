@@ -24,7 +24,10 @@ import { ResponsiveContainer } from 'recharts';
 const useStyles = makeStyles(theme => ({
     root: {
         width: 500, 
-        margin: '0 auto',  
+        margin: '0 auto', 
+        [theme.breakpoints.up('sm')]: {
+            width: 700,
+        }
     },
     card: {
         display: 'flex',

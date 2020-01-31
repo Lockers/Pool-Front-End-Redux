@@ -17,20 +17,26 @@ import Drawer from './display/Drawer';
 import { Rules } from './components/rules/Rules';
 
 function App() {
-  const useStyles = makeStyles({
+  const useStyles = makeStyles(theme => ({
     root: {
-      width: '450px',
+      width: '425px',
       margin: '0 auto',
       display: 'flex',
       flexDirection: "column",
       justifyContent: 'center',
       alignContent: 'center',
       color: 'blue',
+      [theme.breakpoints.up('sm')]: {
+        width: '600px',
+      },
+      [theme.breakpoints.up('md')]: {
+        width: '1000px',
+      }
   },
     label: {
       textTransform: 'capitalize',
     },
-  });
+  }));
 
   const dispatch = useDispatch()
 
