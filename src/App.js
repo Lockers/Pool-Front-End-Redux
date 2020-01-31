@@ -19,19 +19,25 @@ import { Rules } from './components/rules/Rules';
 function App() {
   const useStyles = makeStyles(theme => ({
     root: {
-      width: '425px',
-      margin: '0 auto',
-      display: 'flex',
-      flexDirection: "column",
-      justifyContent: 'center',
-      alignContent: 'center',
-      color: 'blue',
+      [theme.breakpoints.up('xs')]: {
+        width: '425px',
+        margin: '0 auto',
+        display: 'flex',
+        flexDirection: "column",
+        justifyContent: 'center',
+        alignContent: 'center',
+        color: 'blue',
+      },
+
       [theme.breakpoints.up('sm')]: {
         width: '600px',
       },
       [theme.breakpoints.up('md')]: {
-        width: '1000px',
-      }
+        width: '850px',
+      },
+      [theme.breakpoints.up('lg')]: {
+    width: '1200px',
+  },
   },
     label: {
       textTransform: 'capitalize',

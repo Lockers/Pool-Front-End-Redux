@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import ResultsList from '../display/ResultsList';
-import Calender  from './Calender';
+// import Calender  from './Calender';
 
 export const ViewChallenges = () => {
 
@@ -10,7 +10,7 @@ export const ViewChallenges = () => {
     return (
         <div>
             <h1>Upcoming Challenges</h1>
-            <Calender />
+            {/* <Calender /> */}
             {challenges.map(challenge => <ResultsList result={challenge} key={challenge._id}/>)}
          </div >
     )
