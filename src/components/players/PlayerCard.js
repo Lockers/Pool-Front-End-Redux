@@ -99,20 +99,22 @@ export const PlayerCard = (props) => {
 
     //Gets whether a player can be challenged or issue a challenged (48 hour cooling off period)
     const getCanBeChallenged = (player, hoursLeft) => {
-        if (player.results[props.player.results.length - 1].challenger === player.name) {
-            if (hoursLeft.hours(props.player) > 0)
-                return <p>Cannot Challenge for {hoursLeft.hours(player)} Hours</p>
-        }
-        if (player.results[props.player.results.length - 1].challenged === player.name) {
-            if (hoursLeft.hours(props.player) > 0)
-                return <p>Cannot be challenged for {hoursLeft.hours(player)} Hours</p>
+        if (player.results.length > 0) {
+            if (player.results[props.player.results.length - 1].challenger === player.name) {
+                if (hoursLeft.hours(props.player) > 0)
+                    return <p>Cannot Challenge for {hoursLeft.hours(player)} Hours</p>
+            }
+            if (player.results[props.player.results.length - 1].challenged === player.name) {
+                if (hoursLeft.hours(props.player) > 0)
+                    return <p>Cannot be challenged for {hoursLeft.hours(player)} Hours</p>
+            }
         }
     }
 
     if (!props) {
         return <div>Loading</div>
     }
-
+    console.log(props.player)
     //Returns Material UI Card with player details, form.... TODO Stats
     return (
         <div>

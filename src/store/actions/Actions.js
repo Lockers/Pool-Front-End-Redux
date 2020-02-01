@@ -22,6 +22,7 @@ export const getPlayers = () => dispatch => {
     axios
         .get(`${baseUrl}players`)
         .then(res => {
+            console.log(res.data)
             dispatch({ type: GETTING_ALL_PLAYERS_SUCCESS, payload: res.data });
         })
         .catch(err => {
