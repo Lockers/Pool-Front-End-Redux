@@ -20,7 +20,7 @@ function App() {
   const useStyles = makeStyles(theme => ({
     root: {
       [theme.breakpoints.up('xs')]: {
-        width: '425px',
+        width: '320px',
         margin: '0 auto',
         display: 'flex',
         flexDirection: "column",
