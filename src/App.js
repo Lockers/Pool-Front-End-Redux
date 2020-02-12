@@ -20,12 +20,12 @@ function App() {
   const useStyles = makeStyles(theme => ({
     root: {
       [theme.breakpoints.up('xs')]: {
-        width: '320px',
+        width: '400px',
         margin: '0 auto',
         display: 'flex',
         flexDirection: "column",
-        justifyContent: 'center',
-        alignContent: 'center',
+        // justifyContent: 'center',
+        // alignContent: 'center',
         color: 'blue',
       },
 

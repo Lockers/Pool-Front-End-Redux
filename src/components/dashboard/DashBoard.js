@@ -19,17 +19,17 @@ export const DashBoard = () => {
             [theme.breakpoints.up('sm')]: {
                 maxWidth: '600px',
                 width: '100%',
-                flexDirection: "row",
+                flexDirection: "column",
             },
             [theme.breakpoints.up('md')]: {
                 maxWidth: '850px',
                 width: '100%',
-                flexDirection: "row",
+                flexDirection: "column",
             },
             [theme.breakpoints.up('lg')]: {
                 maxWidth: '1200px',
                 width: '100%',
-                flexDirection: "row",
+                flexDirection: "column",
                 // margin: '0 auto',
                 flexWrap: 'wrap'
             },
