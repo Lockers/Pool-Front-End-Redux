@@ -17,9 +17,10 @@ export const Rules = () => {
             <p>Matches must be completed within 30 days from when the challenge is made. If for any reason this doesn't happen, either/both players may receive a strike. On the second strike, the player(s) concerned may be removed from the league.</p>
             <p>Players whose 30-day window expires without being locked into challenge, by design, where a challenge could have been made, will be removed without exception.</p>
             <p>During the 30-day challenge period, neither player can challenge or be challenged by anyone else unless the existing challenge is voided by mutual consent. This rule is to be used for genuine circumstances only.</p>
-            <p>Following the completion of a match, the player who challenged cannot challenge another player for a period of 48hrs following the result being posted in the group. In addition, the player who was challenged cannot be challenged by another player for the same period. These rules apply in all circumstances regardless of who can/cannot challenge others due to other rules applying.</p>
-            <p>New and returning players cannot challenge another player for 48hrs following their announcement in the Facebook group.</p>
+            <p>Following the completion of a match, the player who challenged cannot challenge another player for a period of two days from midnight on the day the match is played. In addition, the player who was challenged cannot be challenged by another player for the same period. These rules apply in all circumstances regardless of who can/cannot challenge others due to other rules applying.</p>
+            <p>New and returning players cannot challenge another player for two days from midnight on the day they are announced in the Facebook group</p>
             <p>Only one player can be challenged at any one time.</p>
+            <p>Following a void challenge, both players are to adhere to the two-day rule.</p>
             <p>Players must play at least one match every 30 days. Failure to do so may result in removal from the league.</p>
             <p>Initial league and incoming player positions to be decided by Lewis Turner and Ian Eldridge(Queers).</p>
             <p>League organiser's decisions are final in all circumstances.</p>
