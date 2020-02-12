@@ -84,7 +84,7 @@ function ResponsiveDrawer(props) {
                         <MenuIcon />
                     </IconButton>
                     <Typography variant="p">
-                        <p>Lockers 8 ball world</p>
+                        <p>Telford and District Ladder League</p>
                     </Typography>
                 </Toolbar>
             </AppBar>
