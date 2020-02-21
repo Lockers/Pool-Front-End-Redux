@@ -7,7 +7,7 @@ export const usePopulateLeague = () => {
         { id: 'name', label: 'Name', minWidth: 100, align: 'center' },
         { id: 'played', label: 'P', minWidth: 50, align: 'center' },
         { id: 'won', label: 'W', minWidth: 50, align: 'center' },
-        { id: 'daysLeft', label: 'LewisCunt', maxWidth: 25, align: 'center' },
+        { id: 'daysLeft', label: 'Deadline (Days)', maxWidth: 25, align: 'center' },
     ];
 
     function createData(leaguePosition, name, played, won, challengable, daysLeft) {
