@@ -18,7 +18,7 @@ export const usePopulateLeague = () => {
 
     const rows = []
     
-    //Gets date from last result to calculate days left for challenge.. set at 30 to count down
+    //Gets date from last result to calculate days left for challenge.. set at 30 to count downlol
     players.map(player => {
         if (player.results.length > 0) {
             let days = 0
